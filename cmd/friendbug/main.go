@@ -12,7 +12,6 @@ import (
 //TODO TO BE TRANSFERED TO SETTINGS
 const maxNumberOfContactsPerDay = 3
 const dateFormat = "2006-01-02"
-const targetNumber = "+32496952214"
 
 func ContactFriends() {
 	client := internal.GetDatabase()
@@ -99,5 +98,6 @@ func sendMessage(friends []internal.Friend) {
 
 	sendMessage := "Hey Anton, you should probably contact " + friendsString + " today!"
 	fmt.Println(sendMessage)
+	targetNumber := os.Getenv("TARGET_NUMBER")
 	internal.SendMessageTwilio(sendMessage, targetNumber)
 }

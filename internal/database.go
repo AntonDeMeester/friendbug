@@ -107,7 +107,7 @@ func ExampleRedis() {
 }
 
 func NewRedisDatabase() RedisDatabase {
-	url := os.Getenv("REDIS_URL")
+	url := os.Getenv("REDISTOGO_URL")
 	client := redis.NewClient(&redis.Options{
 		Addr:     url,
 		Password: "",

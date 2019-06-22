@@ -1,11 +1,9 @@
-package main
+package friendbug
 
 import (
 	"fmt"
 	"math/rand"
 	"time"
-
-	"github.com/joho/godotenv"
 
 	// Own packages
 	"friendbug/internal"
@@ -16,12 +14,7 @@ const maxNumberOfContactsPerDay = 3
 const dateFormat = "2006-01-02"
 const targetNumber = "+32496952214"
 
-func main() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		panic(err)
-	}
-
+func ContactFriends() {
 	client := internal.GetDatabase()
 	friends := client.GetAllFriends()
 
@@ -106,5 +99,5 @@ func sendMessage(friends []internal.Friend) {
 
 	sendMessage := "Hey Anton, you should probably contact " + friendsString + " today!"
 	fmt.Println(sendMessage)
-	//internal.SendMessageTwilio(sendMessage, targetNumber)
+	internal.SendMessageTwilio(sendMessage, targetNumber)
 }

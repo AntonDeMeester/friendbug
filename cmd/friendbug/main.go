@@ -11,7 +11,7 @@ import (
 )
 
 //TODO TO BE TRANSFERED TO SETTINGS
-const maxNumberOfContactsPerDay = 3
+const maxNumberOfContactsPerDay = 2
 const dateFormat = "2006-01-02"
 
 func ContactFriends() {

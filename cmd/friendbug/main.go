@@ -22,15 +22,16 @@ func ContactFriends() {
 
 	for _, friend := range friends {
 		// Take 23 hour to not interfere with exact time differences.
-		if friend.DateContacted.Before(time.Now().Add(time.Hour * 23)) {
+		if friend.DateContacted.Before(time.Now().Add(time.Hour * -23)) {
 			toContactFriends = append(toContactFriends, friend)
-		}
+		} 
 	}
 
 	contactedFriends := sendReminderForFriends(toContactFriends)
 	sendMessage(contactedFriends)
 	for _, friend := range contactedFriends {
 		client.SetFriendAsContacted(friend)
+		fmt.Println(friend)
 	}
 }
 

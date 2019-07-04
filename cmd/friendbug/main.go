@@ -22,7 +22,7 @@ func ContactFriends() {
 
 	for _, friend := range friends {
 		// Take 23 hour to not interfere with exact time differences.
-		if friend.DateContacted.Before(time.Now().Add(time.Hour * -23)) {
+		if friend.DateContacted.Before(time.Now().Add(time.Hour * -23).Add(time.Day * -1 * friend.ContactFrequency)) {
 			toContactFriends = append(toContactFriends, friend)
 		} 
 	}
